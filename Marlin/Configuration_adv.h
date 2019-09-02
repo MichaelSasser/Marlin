@@ -1275,7 +1275,6 @@
   //#define BABYSTEP_DISPLAY_TOTAL          // Display total babysteps since last G28
 
   //#define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping
-  #define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping
   #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
     //#define BABYSTEP_HOTEND_Z_OFFSET      // For multiple hotends, babystep relative Z offsets
     //#define BABYSTEP_ZPROBE_GFX_OVERLAY   // Enable graphical overlay on Z-offset editor
@@ -1733,7 +1732,8 @@
 
   #if AXIS_IS_TMC(X)
     //#define X_CURRENT     800  // (mA) RMS current. Multiply by 1.414 for peak current.
-    #define X_CURRENT     760  // (mA) RMS current. Multiply by 1.414 for peak current.
+    //#define X_CURRENT     760  // (mA) RMS current. Multiply by 1.414 for peak current.
+    #define X_CURRENT     580  // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_MICROSTEPS   16  // 0..256
     #define X_RSENSE     0.11
     #define X_CHAIN_POS     0  // 0 - Not chained, 1 - MCU MOSI connected, 2 - next in chain, ...
@@ -1748,7 +1748,8 @@
 
   #if AXIS_IS_TMC(Y)
     //#define Y_CURRENT     800
-    #define Y_CURRENT     760
+    //#define Y_CURRENT     760
+    #define Y_CURRENT     580
     #define Y_MICROSTEPS   16
     #define Y_RSENSE     0.11
     #define Y_CHAIN_POS     0
@@ -1763,7 +1764,8 @@
 
   #if AXIS_IS_TMC(Z)
     //#define Z_CURRENT     800
-    #define Z_CURRENT     760
+    //#define Z_CURRENT     760
+    #define Z_CURRENT     580
     #define Z_MICROSTEPS   16
     #define Z_RSENSE     0.11
     #define Z_CHAIN_POS     0
@@ -1785,7 +1787,8 @@
 
   #if AXIS_IS_TMC(E0)
     //#define E0_CURRENT    800
-    #define E0_CURRENT    900
+    //#define E0_CURRENT    900
+    #define E0_CURRENT    650
     #define E0_MICROSTEPS  16
     #define E0_RSENSE    0.11
     #define E0_CHAIN_POS    0
@@ -1991,9 +1994,9 @@
 
   #if EITHER(SENSORLESS_HOMING, SENSORLESS_PROBING)
     // TMC2209: 0...255. TMC2130: -64...63
-    #define X_STALL_SENSITIVITY  19  //  <-- Enter Manuelly
+    #define X_STALL_SENSITIVITY  12  //  <-- Enter Manuelly
     #define X2_STALL_SENSITIVITY X_STALL_SENSITIVITY
-    #define Y_STALL_SENSITIVITY  19  //  <-- Enter Manuelly
+    #define Y_STALL_SENSITIVITY  12  //  <-- Enter Manuelly
     //#define Z_STALL_SENSITIVITY  8
     //#define SPI_ENDSTOPS              // TMC2130 only
     //#define IMPROVE_HOMING_RELIABILITY
@@ -2676,12 +2679,12 @@
 #if ENABLED(PRINTCOUNTER)
   #define SERVICE_WARNING_BUZZES  3
   // Activate up to 3 service interval watchdogs
-  #define SERVICE_NAME_1      "Reinigen und Fetten"
-  #define SERVICE_INTERVAL_1  64 // print hours
-  #define SERVICE_NAME_2      "Kalibrieren"
-  #define SERVICE_INTERVAL_2  200 // print hours
-  #define SERVICE_NAME_3      "Firmwareupgrade"
-  #define SERVICE_INTERVAL_3    1000 // print hours
+  //#define SERVICE_NAME_1      "Reinigen und Fetten"
+  //#define SERVICE_INTERVAL_1  64 // print hours
+  //#define SERVICE_NAME_2      "Kalibrieren"
+  //#define SERVICE_INTERVAL_2  200 // print hours
+  //#define SERVICE_NAME_3      "Firmwareupgrade"
+  //#define SERVICE_INTERVAL_3    1000 // print hours
 #endif
 
 // @section develop

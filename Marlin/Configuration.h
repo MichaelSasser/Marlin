@@ -88,10 +88,10 @@
 #define SHOW_BOOTSCREEN
 
 // Show the bitmap in Marlin/_Bootscreen.h on startup.
-#define SHOW_CUSTOM_BOOTSCREEN
+//#define SHOW_CUSTOM_BOOTSCREEN
 
 // Show the bitmap in Marlin/_Statusscreen.h on the status screen.
-#define CUSTOM_STATUS_SCREEN_IMAGE
+//#define CUSTOM_STATUS_SCREEN_IMAGE
 
 // @section machine
 
@@ -122,7 +122,8 @@
  *
  * :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000]
  */
-#define BAUDRATE 115200
+//#define BAUDRATE 115200
+#define BAUDRATE 250000
 
 // Enable the Bluetooth serial interface on AT90USB devices
 //#define BLUETOOTH
@@ -475,10 +476,18 @@
 
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
- // Creality Ender-3
-  #define DEFAULT_Kp 21.73
-  #define DEFAULT_Ki 1.54
-  #define DEFAULT_Kd 76.55
+  // Creality Ender-3
+  // #define DEFAULT_Kp 21.73
+  // #define DEFAULT_Ki 1.54
+  // #define DEFAULT_Kd 76.55
+
+  // PID-Autotune Hotend
+  // M502
+  // M503
+  // M303 S210 C10 E0
+  #define DEFAULT_Kp 22.82
+  #define DEFAULT_Ki 1.83
+  #define DEFAULT_Kd 71.26
 
   // Ultimaker
   //#define DEFAULT_Kp 22.2
@@ -532,9 +541,9 @@
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 10.00
-  #define DEFAULT_bedKi .023
-  #define DEFAULT_bedKd 305.4
+  //#define DEFAULT_bedKp 10.00
+  //#define DEFAULT_bedKi .023
+  //#define DEFAULT_bedKd 305.4
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from pidautotune
@@ -543,6 +552,13 @@
   //#define DEFAULT_bedKd 1675.16
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
+  // Ender 3 Pro PID-Autotune Bed
+  // M502
+  // M503
+  // M303 E-1 S50 C10
+  #define DEFAULT_bedKp 33.23
+  #define DEFAULT_bedKi 3.58
+  #define DEFAULT_bedKd 189.83
 #endif // PIDTEMPBED
 
 // @section extruder
@@ -734,6 +750,7 @@
  */
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 4000, 500 }
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+//                                      80.402, 80,5234, 400.0, 94.90                                          
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -805,7 +822,7 @@
  *
  * See https://github.com/synthetos/TinyG/wiki/Jerk-Controlled-Motion-Explained
  */
-//#define S_CURVE_ACCELERATION
+#define S_CURVE_ACCELERATION
 
 //===========================================================================
 //============================= Z Probe Options =============================
@@ -1474,18 +1491,23 @@
 //#define PREHEAT_1_TEMP_HOTEND 180
 //#define PREHEAT_1_TEMP_BED     70
 //#define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
-#define PREHEAT_1_TEMP_HOTEND 215
-#define PREHEAT_1_TEMP_BED     40
+#define PREHEAT_1_TEMP_HOTEND 210
+#define PREHEAT_1_TEMP_BED     50
 #define PREHEAT_1_FAN_SPEED   255 // Value from 0 to 255
 
 
-#define PREHEAT_2_LABEL       "ABS"
+#define PREHEAT_2_LABEL       "PETG"
 //#define PREHEAT_2_TEMP_HOTEND 240
 //#define PREHEAT_2_TEMP_BED    110
 //#define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 #define PREHEAT_2_TEMP_HOTEND 240
-#define PREHEAT_2_TEMP_BED     80
+#define PREHEAT_2_TEMP_BED     90
 #define PREHEAT_2_FAN_SPEED   255 // Value from 0 to 255
+
+#define PREHEAT_3_LABEL       "TPU"
+#define PREHEAT_3_TEMP_HOTEND 240
+#define PREHEAT_3_TEMP_BED     60
+#define PREHEAT_3_FAN_SPEED   255 // Value from 0 to 255
 
 /**
  * Nozzle Park
