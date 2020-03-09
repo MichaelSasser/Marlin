@@ -406,7 +406,7 @@
  *   998 : Dummy Table that ALWAYS reads 25°C or the temperature defined below.
  *   999 : Dummy Table that ALWAYS reads 100°C or the temperature defined below.
  */
-#define TEMP_SENSOR_0 1
+#define TEMP_SENSOR_0 5
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
@@ -445,7 +445,7 @@
 // Above this temperature the heater will be switched off.
 // This can protect components from overheating, but NOT from shorts and failures.
 // (Use MINTEMP for thermistor short/failure protection.)
-#define HEATER_0_MAXTEMP 275
+#define HEATER_0_MAXTEMP 300 // Hemera max: 285 Std.: 275 ... remember -15°C restrictions
 #define HEATER_1_MAXTEMP 275
 #define HEATER_2_MAXTEMP 275
 #define HEATER_3_MAXTEMP 275
@@ -486,9 +486,9 @@
   // M502
   // M503
   // M303 S210 C10 E0
-  #define DEFAULT_Kp 22.82
-  #define DEFAULT_Ki 1.83
-  #define DEFAULT_Kd 71.26
+  #define DEFAULT_Kp 27.08
+  #define DEFAULT_Ki 2.38
+  #define DEFAULT_Kd 77.15
 
   // Ultimaker
   //#define DEFAULT_Kp 22.2
@@ -750,8 +750,9 @@
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 4000, 500 }
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.402, 80.5234, 400, 94.9 }
-//                                      80.402, 80,5234, 400.0, 94.90                                          
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.402, 80.5234, 400.0, 396.0396 }
+//                                      80.402, 80,5234, 400.0, 396.0396                               
+//                                      80.402, 80,5234, 400.0, 94.90            // orig                               
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -825,7 +826,7 @@
  *   http://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
 #if DISABLED(CLASSIC_JERK)
-  #define JUNCTION_DEVIATION_MM 0.013 // (mm) Distance from real junction edge
+  #define JUNCTION_DEVIATION_MM 0.013 // (mm) Distance from real junction edge   // NEW DEFAULT: 0.05
 #endif
 
 /**
@@ -965,10 +966,10 @@
  *
  * Specify a Probe position as { X, Y, Z }
  */
-#define NOZZLE_TO_PROBE_OFFSET { -46, -7, -1.81 }
+#define NOZZLE_TO_PROBE_OFFSET { -40, 7, -2 }
 
 // Certain types of probes need to stay away from edges
-#define MIN_PROBE_EDGE 10
+#define MIN_PROBE_EDGE 0
 
 // X and Y axis travel speed (mm/m) between probes
 #define XY_PROBE_SPEED 8000
@@ -1084,7 +1085,7 @@
 
 //#define UNKNOWN_Z_NO_RAISE // Don't raise Z (lower the bed) if Z is "unknown." For beds that fall when Z is powered off.
 
-//#define Z_HOMING_HEIGHT 4  // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ...
+#define Z_HOMING_HEIGHT 12  // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ...
                              // Be sure you have this distance over your Z_MAX_POS in case.
 
 // Direction of endstops when homing; 1=MAX, -1=MIN
@@ -1097,18 +1098,19 @@
 
 // The size of the print bed
 #define X_BED_SIZE 235
-#define Y_BED_SIZE 235
+#define Y_BED_SIZE 180 // 185 marlin was 209,0
 //#define X_BED_SIZE 200
 //#define Y_BED_SIZE 200
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
-#define Y_MIN_POS 0
+#define Y_MIN_POS -40  // -23
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
-#define Y_MAX_POS Y_BED_SIZE
+//#define Y_MAX_POS Y_BED_SIZE - (Y_BED_SIZE - 180)  // 180 = Save (with hotend offset) distance from clip to clip 
+#define Y_MAX_POS Y_BED_SIZE 
 //#define Z_MAX_POS 200
-#define Z_MAX_POS 250
+#define Z_MAX_POS 250 - Z_HOMING_HEIGHT  // For Clearance To Probe
 
 /**
  * Software Endstops
@@ -1247,9 +1249,9 @@
   #if ENABLED(G26_MESH_VALIDATION)
     #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.
     #define MESH_TEST_LAYER_HEIGHT   0.2  // (mm) Default layer height for the G26 Mesh Validation Tool.
-    #define MESH_TEST_HOTEND_TEMP  210    // (°C) Default nozzle temperature for the G26 Mesh Validation Tool.
+    #define MESH_TEST_HOTEND_TEMP  215    // (°C) Default nozzle temperature for the G26 Mesh Validation Tool.
     #define MESH_TEST_BED_TEMP      60    // (°C) Default bed temperature for the G26 Mesh Validation Tool.
-    #define G26_XY_FEEDRATE         20    // (mm/s) Feedrate for XY Moves for the G26 Mesh Validation Tool.  S3D = 60
+    #define G26_XY_FEEDRATE         10    // (mm/s) Feedrate for XY Moves for the G26 Mesh Validation Tool.  S3D = 60
   #endif
 
 #endif
@@ -1290,7 +1292,7 @@
   #define MESH_EDIT_GFX_OVERLAY   // Display a graphics overlay while editing the mesh
 
   //#define MESH_INSET 1              // Set Mesh bounds as an inset region of the bed
-  #define MESH_INSET 35              // Set Mesh bounds as an inset region of the bed
+  #define MESH_INSET 0             // Set Mesh bounds as an inset region of the bed
   #define GRID_MAX_POINTS_X 10      // Don't use more than 15 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
@@ -1489,8 +1491,8 @@
 //#define PREHEAT_1_TEMP_HOTEND 180
 //#define PREHEAT_1_TEMP_BED     70
 //#define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
-#define PREHEAT_1_TEMP_HOTEND 210
-#define PREHEAT_1_TEMP_BED     50
+#define PREHEAT_1_TEMP_HOTEND 215
+#define PREHEAT_1_TEMP_BED     60
 #define PREHEAT_1_FAN_SPEED   255 // Value from 0 to 255
 
 
@@ -1498,8 +1500,8 @@
 //#define PREHEAT_2_TEMP_HOTEND 240
 //#define PREHEAT_2_TEMP_BED    110
 //#define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
-#define PREHEAT_2_TEMP_HOTEND 240
-#define PREHEAT_2_TEMP_BED     90
+#define PREHEAT_2_TEMP_HOTEND 210
+#define PREHEAT_2_TEMP_BED     80
 #define PREHEAT_2_FAN_SPEED   255 // Value from 0 to 255
 
 #define PREHEAT_3_LABEL       "TPU"
@@ -1931,7 +1933,7 @@
 // RepRapDiscount FULL GRAPHIC Smart Controller
 // http://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller
 //
-//#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
 
 //
 // ReprapWorld Graphical LCD
@@ -2010,7 +2012,7 @@
 // This is RAMPS-compatible using a single 10-pin connector.
 // (For CR-10 owners who want to replace the Melzi Creality board but retain the display)
 //
-#define CR10_STOCKDISPLAY
+//#define CR10_STOCKDISPLAY
 
 //
 // ANET and Tronxy Graphical Controller
