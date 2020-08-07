@@ -491,9 +491,9 @@
 //#define CASE_LIGHT_USE_NEOPIXEL           // Use Neopixel LED as case light, requires NEOPIXEL_LED.
 #if ENABLED(CASE_LIGHT_USE_NEOPIXEL)
 #define CASE_LIGHT_NEOPIXEL_COLOR \
-  {                               \
-    255, 255, 255, 255            \
-  } // { Red, Green, Blue, White }
+   {                              \
+      255, 255, 255, 255          \
+   } // { Red, Green, Blue, White }
 #endif
 #endif
 
@@ -605,10 +605,10 @@
 #define X2_MIN_POS 80          // Set a minimum to ensure the  second X-carriage can't hit the parked first X-carriage
 #define X2_MAX_POS 353         // Set this to the distance between toolheads when both heads are homed
 #define X2_HOME_DIR 1          // Set to 1. The second X-carriage always homes to the maximum endstop position
-#define X2_HOME_POS X2_MAX_POS // Default X2 home position. Set to X2_MAX_POS.                                                     \
-                               // However: In this mode the HOTEND_OFFSET_X value for the second extruder provides a software      \
-                               // override for X2_HOME_POS. This also allow recalibration of the distance between the two endstops \
-                               // without modifying the firmware (through the "M218 T1 X???" command).                             \
+#define X2_HOME_POS X2_MAX_POS // Default X2 home position. Set to X2_MAX_POS. 
+                               // However: In this mode the HOTEND_OFFSET_X value for the second extruder provides a software 
+                               // override for X2_HOME_POS. This also allow recalibration of the distance between the two endstops 
+                               // without modifying the firmware (through the "M218 T1 X???" command).                             
                                // Remember: you should set the second extruder x-offset to 0 in your slicer.
 
 // This is the default power-up mode which can be later using M605.
@@ -632,14 +632,8 @@
 
 //#define SENSORLESS_BACKOFF_MM  { 2, 2 }     // (mm) Backoff from endstops before sensorless homing
 
-#define HOMING_BUMP_MM \
-  {                    \
-    0, 0, 0            \
-  } // (mm) Backoff from endstops after first bump
-#define HOMING_BUMP_DIVISOR \
-  {                         \
-    2, 2, 4                 \
-  } // Re-Bump Speed Divisor (Divides the Homing Feedrate)
+#define HOMING_BUMP_MM {0, 0, 0} // (mm) Backoff from endstops after first bump
+#define HOMING_BUMP_DIVISOR {2, 2, 4} // Re-Bump Speed Divisor (Divides the Homing Feedrate)
 
 //#define HOMING_BACKOFF_POST_MM { 2, 2, 2 }  // (mm) Backoff from endstops after homing
 
@@ -760,10 +754,7 @@
 // Define Stepper XY positions for Z1, Z2, Z3 corresponding to
 // the Z screw positions in the bed carriage.
 // Define one position per Z stepper in stepper driver order.
-#define Z_STEPPER_ALIGN_STEPPER_XY                  \
-  {                                                 \
-    {210.7, 102.5}, {152.6, 220.0}, { 94.5, 102.5 } \
-  }
+#define Z_STEPPER_ALIGN_STEPPER_XY {{210.7, 102.5}, {152.6, 220.0}, { 94.5, 102.5 }}
 #else
 // Amplification factor. Used to scale the correction step up or down in case
 // the stepper (spindle) position is farther out than the test point.
@@ -787,10 +778,7 @@
 #if ENABLED(ASSISTED_TRAMMING)
 
 // Define positions for probing points, use the hotend as reference not the sensor.
-#define TRAMMING_POINT_XY                        \
-  {                                              \
-    {20, 20}, {200, 20}, {200, 200}, { 20, 200 } \
-  }
+#define TRAMMING_POINT_XY {{20, 20}, {200, 20}, {200, 200}, { 20, 200 }}
 
 // Define positions names for probing points.
 #define TRAMMING_POINT_NAME_1 "Front-Left"
@@ -813,10 +801,7 @@
 
 // @section motion
 
-#define AXIS_RELATIVE_MODES    \
-  {                            \
-    false, false, false, false \
-  }
+#define AXIS_RELATIVE_MODES {false, false, false, false}
 
 // Add a Duplicate option for well-separated conjoined nozzles
 //#define MULTI_NOZZLE_DUPLICATION
@@ -875,10 +860,7 @@
 #if ENABLED(BACKLASH_COMPENSATION)
 // Define values for backlash distance and correction.
 // If BACKLASH_GCODE is enabled these values are the defaults.
-#define BACKLASH_DISTANCE_MM \
-  {                          \
-    0, 0, 0                  \
-  }                             // (mm)
+#define BACKLASH_DISTANCE_MM {0, 0, 0}                            // (mm)
 #define BACKLASH_CORRECTION 0.0 // 0.0 = no correction; 1.0 = full correction
 
 // Set BACKLASH_SMOOTHING_MM to spread backlash correction over multiple segments
@@ -936,14 +918,8 @@
 //#define CALIBRATION_REPORTING
 
 // The true location and dimension the cube/bolt/washer on the bed.
-#define CALIBRATION_OBJECT_CENTER \
-  {                               \
-    264.0, -22.0, -2.0            \
-  } // mm
-#define CALIBRATION_OBJECT_DIMENSIONS \
-  {                                   \
-    10.0, 10.0, 10.0                  \
-  } // mm
+#define CALIBRATION_OBJECT_CENTER {264.0, -22.0, -2.0} // mm
+#define CALIBRATION_OBJECT_DIMENSIONS {10.0, 10.0, 10.0} // mm
 
 // Comment out any sides which are unreachable by the probe. For best
 // auto-calibration results, all sides must be reachable.
@@ -985,10 +961,7 @@
 //#define MICROSTEP32 HIGH,LOW,HIGH
 
 // Microstep settings (Requires a board with pins named X_MS1, X_MS2, etc.)
-#define MICROSTEP_MODES    \
-  {                        \
-    16, 16, 16, 16, 16, 16 \
-  } // [1,2,4,8,16]
+#define MICROSTEP_MODES {16, 16, 16, 16, 16, 16} // [1,2,4,8,16]
 
 /**
  *  @section  stepper motor current
@@ -1024,10 +997,7 @@
 
 // Actual motor currents in Amps. The number of entries must match DIGIPOT_I2C_NUM_CHANNELS.
 // These correspond to the physical drivers, so be mindful if the order is changed.
-#define DIGIPOT_I2C_MOTOR_CURRENTS         \
-  {                                        \
-    1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 \
-  } // AZTEEG_X3_PRO
+#define DIGIPOT_I2C_MOTOR_CURRENTS {1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0} // AZTEEG_X3_PRO
 
 //#define DIGIPOT_USE_RAW_VALUES    // Use DIGIPOT_MOTOR_CURRENT raw wiper values (instead of A4988 motor currents)
 
@@ -1052,10 +1022,7 @@
 // @section lcd
 
 #if EITHER(ULTIPANEL, EXTENSIBLE_UI)
-#define MANUAL_FEEDRATE          \
-  {                              \
-    50 * 60, 50 * 60, 4 * 60, 60 \
-  }                               // Feedrates for manual moves along X, Y, Z, E from panel
+#define MANUAL_FEEDRATE {50 * 60, 50 * 60, 4 * 60, 60}  // Feedrates for manual moves along X, Y, Z, E from panel
 #define SHORT_MANUAL_Z_MOVE 0.025 // (mm) Smallest manual Z move (< 0.1mm)
 #if ENABLED(ULTIPANEL)
 #define MANUAL_E_MOVES_RELATIVE // Display extruder move distance rather than "position"
@@ -1231,7 +1198,7 @@
 #define SDSORT_USES_STACK false  // Prefer the stack for pre-sorting to give back some SRAM. (Negated by next 2 options.)
 #define SDSORT_CACHE_NAMES false // Keep sorted items in RAM longer for speedy performance. Most expensive option.
 #define SDSORT_DYNAMIC_RAM false // Use dynamic allocation (within SD menus). Least expensive option. Set SDSORT_LIMIT before use!
-#define SDSORT_CACHE_VFATS 2     // Maximum number of 13-byte VFAT entries to use for sorting. \
+#define SDSORT_CACHE_VFATS 2     // Maximum number of 13-byte VFAT entries to use for sorting. 
                                  // Note: Only affects SCROLL_LONG_FILENAMES with SDSORT_CACHE_NAMES but not SDSORT_DYNAMIC_RAM.
 #endif
 
@@ -1601,7 +1568,7 @@
 
 #define DOUBLECLICK_FOR_Z_BABYSTEPPING // Double-click on the Status Screen for Z Babystepping.
 #if ENABLED(DOUBLECLICK_FOR_Z_BABYSTEPPING)
-#define DOUBLECLICK_MAX_INTERVAL 1250 // Maximum interval between clicks, in milliseconds. \
+#define DOUBLECLICK_MAX_INTERVAL 1250 // Maximum interval between clicks, in milliseconds. 
                                       // Note: Extra time may be added to mitigate controller latency.
 //#define BABYSTEP_ALWAYS_AVAILABLE     // Allow babystepping at all times (not just during movement).
 //#define MOVE_Z_WHEN_IDLE              // Jump to the move Z menu on doubleclick when printer is idle.
@@ -1636,7 +1603,7 @@
  *
  * See https://marlinfw.org/docs/features/lin_advance.html for full instructions.
  */
-#define LIN_ADVANCE
+//#define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
 //#define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
 //#define LIN_ADVANCE_K 0.22    // Unit: mm compression per 1mm/s extruder speed
@@ -1726,16 +1693,10 @@
 // Note: this values cannot be calibrated and have to be set manually
 #if ENABLED(PROBE_TEMP_COMPENSATION)
 // Park position to wait for probe cooldown
-#define PTC_PARK_POS \
-  {                  \
-    0, 0, 100        \
-  }
+#define PTC_PARK_POS {0, 0, 100}
 
 // Probe position to probe and wait for probe to reach target temperature
-#define PTC_PROBE_POS \
-  {                   \
-    90, 100           \
-  }
+#define PTC_PROBE_POS {90, 100}
 
 // Enable additional compensation using hotend temperature
 // Note: this values cannot be calibrated automatically but have to be set manually
@@ -2066,10 +2027,7 @@
    */
 //#define TOOLCHANGE_PARK
 #if ENABLED(TOOLCHANGE_PARK)
-#define TOOLCHANGE_PARK_XY         \
-  {                                \
-    X_MIN_POS + 10, Y_MIN_POS + 10 \
-  }
+#define TOOLCHANGE_PARK_XY {X_MIN_POS + 10, Y_MIN_POS + 10}
 #define TOOLCHANGE_PARK_XY_FEEDRATE 6000 // (mm/m)
 //#define TOOLCHANGE_PARK_X_ONLY          // X axis only move
 //#define TOOLCHANGE_PARK_Y_ONLY          // Y axis only move
@@ -2089,27 +2047,27 @@
 //#define ADVANCED_PAUSE_FEATURE
 #if ENABLED(ADVANCED_PAUSE_FEATURE)
 #define PAUSE_PARK_RETRACT_FEEDRATE 60       // (mm/s) Initial retract feedrate.
-#define PAUSE_PARK_RETRACT_LENGTH 2          // (mm) Initial retract. \
+#define PAUSE_PARK_RETRACT_LENGTH 2          // (mm) Initial retract.
                                              // This short retract is done immediately, before parking the nozzle.
 #define FILAMENT_CHANGE_UNLOAD_FEEDRATE 10   // (mm/s) Unload filament feedrate. This can be pretty fast.
 #define FILAMENT_CHANGE_UNLOAD_ACCEL 25      // (mm/s^2) Lower acceleration may allow a faster feedrate.
-#define FILAMENT_CHANGE_UNLOAD_LENGTH 100    // (mm) The length of filament for a complete unload.    \
-                                             //   For Bowden, the full length of the tube and nozzle. \
-                                             //   For direct drive, the full length of the nozzle.    \
+#define FILAMENT_CHANGE_UNLOAD_LENGTH 100    // (mm) The length of filament for a complete unload.
+                                             //   For Bowden, the full length of the tube and nozzle.
+                                             //   For direct drive, the full length of the nozzle.   
                                              //   Set to 0 for manual unloading.
 #define FILAMENT_CHANGE_SLOW_LOAD_FEEDRATE 6 // (mm/s) Slow move when starting load.
-#define FILAMENT_CHANGE_SLOW_LOAD_LENGTH 0   // (mm) Slow length, to allow time to insert material. \
+#define FILAMENT_CHANGE_SLOW_LOAD_LENGTH 0   // (mm) Slow length, to allow time to insert material.
                                              // 0 to disable start loading and skip to fast load only
 #define FILAMENT_CHANGE_FAST_LOAD_FEEDRATE 6 // (mm/s) Load filament feedrate. This can be pretty fast.
 #define FILAMENT_CHANGE_FAST_LOAD_ACCEL 25   // (mm/s^2) Lower acceleration may allow a faster feedrate.
-#define FILAMENT_CHANGE_FAST_LOAD_LENGTH 0   // (mm) Load length of filament, from extruder gear to nozzle. \
-                                             //   For Bowden, the full length of the tube and nozzle.       \
+#define FILAMENT_CHANGE_FAST_LOAD_LENGTH 0   // (mm) Load length of filament, from extruder gear to nozzle. 
+                                             //   For Bowden, the full length of the tube and nozzle.       
                                              //   For direct drive, the full length of the nozzle.
 //#define ADVANCED_PAUSE_CONTINUOUS_PURGE       // Purge continuously up to the purge length until interrupted.
 #define ADVANCED_PAUSE_PURGE_FEEDRATE 3 // (mm/s) Extrude feedrate (after loading). Should be slower than load feedrate.
-#define ADVANCED_PAUSE_PURGE_LENGTH 50  // (mm) Length to extrude after loading.                               \
-                                        //   Set to 0 for manual extrusion.                                    \
-                                        //   Filament can be extruded repeatedly from the Filament Change menu \
+#define ADVANCED_PAUSE_PURGE_LENGTH 50  // (mm) Length to extrude after loading.                               
+                                        //   Set to 0 for manual extrusion.                                    
+                                        //   Filament can be extruded repeatedly from the Filament Change menu 
                                         //   until extrusion is consistent, and to purge old filament.
 #define ADVANCED_PAUSE_RESUME_PRIME 0   // (mm) Extra distance to prime nozzle after returning from park.
 //#define ADVANCED_PAUSE_FANS_PAUSE             // Turn off print-cooling fans while the machine is paused.
@@ -2595,9 +2553,7 @@
    *   stepperY.intpol(0); \
    * }
    */
-#define TMC_ADV() \
-  {               \
-  }
+#define TMC_ADV() {}
 
 #endif // HAS_TRINAMIC_CONFIG
 
@@ -2623,12 +2579,12 @@
 
 #if AXIS_IS_L64XX(X)
 #define X_MICROSTEPS 128    // Number of microsteps (VALID: 1, 2, 4, 8, 16, 32, 128) - L6474 max is 16
-#define X_OVERCURRENT 2000  // (mA) Current where the driver detects an over current          \
-                            //   L6470 & L6474 - VALID: 375 x (1 - 16) - 6A max - rounds down \
+#define X_OVERCURRENT 2000  // (mA) Current where the driver detects an over current          
+                            //   L6470 & L6474 - VALID: 375 x (1 - 16) - 6A max - rounds down 
                             //   POWERSTEP01: VALID: 1000 x (1 - 32) - 32A max - rounds down
-#define X_STALLCURRENT 1500 // (mA) Current where the driver detects a stall (VALID: 31.25 * (1-128) -  4A max - rounds down) \
-                            //   L6470 & L6474 - VALID: 31.25 * (1-128) -  4A max - rounds down                               \
-                            //   POWERSTEP01: VALID: 200 x (1 - 32) - 6.4A max - rounds down                                  \
+#define X_STALLCURRENT 1500 // (mA) Current where the driver detects a stall (VALID: 31.25 * (1-128) -  4A max - rounds down)
+                            //   L6470 & L6474 - VALID: 31.25 * (1-128) -  4A max - rounds down                              
+                            //   POWERSTEP01: VALID: 200 x (1 - 32) - 6.4A max - rounds down                                 
                             //   L6474 - STALLCURRENT setting is used to set the nominal (TVAL) current
 #define X_MAX_VOLTAGE 127   // 0-255, Maximum effective voltage seen by stepper - not used by L6474
 #define X_CHAIN_POS -1      // Position in SPI chain, 0=Not in chain, 1=Nearest MOSI
@@ -3289,23 +3245,23 @@
 //#define I2C_POSITION_ENCODERS
 #if ENABLED(I2C_POSITION_ENCODERS)
 
-#define I2CPE_ENCODER_CNT 1 // The number of encoders installed; max of 5 \
+#define I2CPE_ENCODER_CNT 1 // The number of encoders installed; max of 5
                             // encoders supported currently.
 
 #define I2CPE_ENC_1_ADDR I2CPE_PRESET_ADDR_X   // I2C address of the encoder. 30-200.
 #define I2CPE_ENC_1_AXIS X_AXIS                // Axis the encoder module is installed on.  <X|Y|Z|E>_AXIS.
-#define I2CPE_ENC_1_TYPE I2CPE_ENC_TYPE_LINEAR // Type of encoder:  I2CPE_ENC_TYPE_LINEAR -or- \
+#define I2CPE_ENC_1_TYPE I2CPE_ENC_TYPE_LINEAR // Type of encoder:  I2CPE_ENC_TYPE_LINEAR -or- 
                                                // I2CPE_ENC_TYPE_ROTARY.
-#define I2CPE_ENC_1_TICKS_UNIT 2048            // 1024 for magnetic strips with 2mm poles; 2048 for  \
-                                               // 1mm poles. For linear encoders this is ticks / mm, \
+#define I2CPE_ENC_1_TICKS_UNIT 2048            // 1024 for magnetic strips with 2mm poles; 2048 for  
+                                               // 1mm poles. For linear encoders this is ticks / mm, 
                                                // for rotary encoders this is ticks / revolution.
 //#define I2CPE_ENC_1_TICKS_REV     (16 * 200)            // Only needed for rotary encoders; number of stepper
 // steps per full revolution (motor steps/rev * microstepping)
 //#define I2CPE_ENC_1_INVERT                              // Invert the direction of axis travel.
 #define I2CPE_ENC_1_EC_METHOD I2CPE_ECM_MICROSTEP // Type of error error correction.
-#define I2CPE_ENC_1_EC_THRESH 0.10                // Threshold size for error (in mm) above which the     \
-                                                  // printer will attempt to correct the error; errors    \
-                                                  // smaller than this are ignored to minimize effects of \
+#define I2CPE_ENC_1_EC_THRESH 0.10                // Threshold size for error (in mm) above which the     
+                                                  // printer will attempt to correct the error; errors    
+                                                  // smaller than this are ignored to minimize effects of 
                                                   // measurement noise / latency (filter).
 
 #define I2CPE_ENC_2_ADDR I2CPE_PRESET_ADDR_Y // Same as above, but for encoder 2.
@@ -3337,8 +3293,8 @@
 // axis after which the printer will abort. Comment out to
 // disable abort behavior.
 
-#define I2CPE_TIME_TRUSTED 10000 // After an encoder fault, there must be no further fault \
-                                 // for this amount of time (in ms) before the encoder     \
+#define I2CPE_TIME_TRUSTED 10000 // After an encoder fault, there must be no further fault 
+                                 // for this amount of time (in ms) before the encoder     
                                  // is trusted again.
 
 /**
@@ -3368,18 +3324,9 @@
 //#define INVERT_JOY_Z  // Enable if Z direction is reversed
 
 // Use M119 with JOYSTICK_DEBUG to find reasonable values after connecting:
-#define JOY_X_LIMITS                    \
-  {                                     \
-    5600, 8190 - 100, 8190 + 100, 10800 \
-  } // min, deadzone start, deadzone end, max
-#define JOY_Y_LIMITS                    \
-  {                                     \
-    5600, 8250 - 100, 8250 + 100, 11000 \
-  }
-#define JOY_Z_LIMITS                    \
-  {                                     \
-    4800, 8080 - 100, 8080 + 100, 11550 \
-  }
+#define JOY_X_LIMITS {5600, 8190 - 100, 8190 + 100, 10800} // min, deadzone start, deadzone end, max
+#define JOY_Y_LIMITS {5600, 8250 - 100, 8250 + 100, 11000}
+#define JOY_Z_LIMITS {4800, 8080 - 100, 8080 + 100, 11550}
 #endif
 
 /**
@@ -3397,7 +3344,7 @@
 //#define MAX7219_GCODE          // Add the M7219 G-code to control the LED matrix
 #define MAX7219_INIT_TEST 2    // Test pattern at startup: 0=none, 1=sweep, 2=spiral
 #define MAX7219_NUMBER_UNITS 1 // Number of Max7219 units in chain.
-#define MAX7219_ROTATE 0       // Rotate the display clockwise (in multiples of +/- 90°) \
+#define MAX7219_ROTATE 0       // Rotate the display clockwise (in multiples of +/- 90°) 
                                // connector at:  right=0   bottom=-90  top=90  left=180
 //#define MAX7219_REVERSE_ORDER  // The individual LED matrix units may be in reversed order
 //#define MAX7219_SIDE_BY_SIDE   // Big chip+matrix boards can be chained side-by-side
@@ -3410,8 +3357,8 @@
 #define MAX7219_DEBUG_PLANNER_HEAD 3 // Show the planner queue head position on this and the next LED matrix row
 #define MAX7219_DEBUG_PLANNER_TAIL 5 // Show the planner queue tail position on this and the next LED matrix row
 
-#define MAX7219_DEBUG_PLANNER_QUEUE 0 // Show the current planner queue depth on this and the next LED matrix row \
-                                      // If you experience stuttering, reboots, etc. this option can reveal how   \
+#define MAX7219_DEBUG_PLANNER_QUEUE 0 // Show the current planner queue depth on this and the next LED matrix row 
+                                      // If you experience stuttering, reboots, etc. this option can reveal how   
                                       // tweaks made to the configuration are affecting the printer in real-time.
 #endif
 
@@ -3477,29 +3424,8 @@
 // Settings for filament load / unload from the LCD menu.
 // This is for Prusa MK3-style extruders. Customize for your hardware.
 #define MMU2_FILAMENTCHANGE_EJECT_FEED 80.0
-#define MMU2_LOAD_TO_NOZZLE_SEQUENCE \
-  {7.2, 1145},                       \
-      {14.4, 871},                   \
-      {36.0, 1393},                  \
-      {14.4, 871},                   \
-  {                                  \
-    50.0, 198                        \
-  }
-
-#define MMU2_RAMMING_SEQUENCE \
-  {1.0, 1000},                \
-      {1.0, 1500},            \
-      {2.0, 2000},            \
-      {1.5, 3000},            \
-      {2.5, 4000},            \
-      {-15.0, 5000},          \
-      {-14.0, 1200},          \
-      {-6.0, 600},            \
-      {10.0, 700},            \
-      {-10.0, 400},           \
-  {                           \
-    -50.0, 2000               \
-  }
+#define MMU2_LOAD_TO_NOZZLE_SEQUENCE {7.2, 1145}, {14.4, 871}, {36.0, 1393}, {14.4, 871}, {50.0, 198}
+#define MMU2_RAMMING_SEQUENCE {1.0, 1000}, {1.0, 1500}, {2.0, 2000}, {1.5, 3000}, {2.5, 4000}, {-15.0, 5000}, {-14.0, 1200}, {-6.0, 600}, {10.0, 700}, {-10.0, 400}, {-50.0, 2000}
 #endif
 
 /**
@@ -3528,21 +3454,13 @@
 #define MMU2_C0_RETRY 5 // Number of retries (total time = timeout*retries)
 
 #define MMU2_CAN_LOAD_FEEDRATE 800 // (mm/m)
-#define MMU2_CAN_LOAD_SEQUENCE        \
-  {0.1, MMU2_CAN_LOAD_FEEDRATE},      \
-      {60.0, MMU2_CAN_LOAD_FEEDRATE}, \
-  {                                   \
-    -52.0, MMU2_CAN_LOAD_FEEDRATE     \
-  }
+#define MMU2_CAN_LOAD_SEQUENCE {0.1, MMU2_CAN_LOAD_FEEDRATE}, {60.0, MMU2_CAN_LOAD_FEEDRATE}, {-52.0, MMU2_CAN_LOAD_FEEDRATE}
 
 #define MMU2_CAN_LOAD_RETRACT 6.0   // (mm) Keep under the distance between Load Sequence values
 #define MMU2_CAN_LOAD_DEVIATION 0.8 // (mm) Acceptable deviation
 
 #define MMU2_CAN_LOAD_INCREMENT 0.2 // (mm) To reuse within MMU2 module
-#define MMU2_CAN_LOAD_INCREMENT_SEQUENCE             \
-  {                                                  \
-    -MMU2_CAN_LOAD_INCREMENT, MMU2_CAN_LOAD_FEEDRATE \
-  }
+#define MMU2_CAN_LOAD_INCREMENT_SEQUENCE {-MMU2_CAN_LOAD_INCREMENT, MMU2_CAN_LOAD_FEEDRATE}
 
 #endif
 
